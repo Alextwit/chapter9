@@ -2,41 +2,21 @@ package main;
 
 import exception.MyException;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-
 public class MyClass {
+
+    static void myMethod() throws MyException {
+        if (true) {
+            throw new MyException("error");
+        }
+    }
+
     public static void main(String[] args) {
 
         try {
-            FileReader reader = new FileReader("file");
-            BufferedReader bReader = new BufferedReader(reader);
-            String line = bReader.readLine();
-            while (line != null) {
-                System.out.println(line);
-                line = bReader.readLine();
-
-            }
+            myMethod();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("caught");
         }
-        catch (MyException e) {
-            // code
-        }
-        catch (FileNotFoundException e) {
-            // code
-        }
-        catch (IOException e) {
-            // code
-        }
-        catch (IllegalArgumentException e) {
-            // code
-        }
-        catch (OutOfMemoryError e) {
-            // code
-        }
-
-
-
     }
 }
